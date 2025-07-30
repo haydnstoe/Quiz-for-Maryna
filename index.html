@@ -1,22 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
-  <title>Interactive Quiz</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Quiz for Maryna</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 1rem;
+    }
+    p.intro {
+      background: #eef5ff;
+      padding: 10px 15px;
+      border-left: 4px solid #003366;
+      margin-bottom: 2rem;
+    }
+    .question {
+      margin-bottom: 1.5rem;
+    }
+    .question label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    select {
+      padding: 0.3rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    .feedback {
+      display: inline-block;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+    .answer-key {
+      font-style: italic;
+      margin-top: 4px;
+      color: #333;
+    }
+    .correct .feedback,
+    .correct label {
+      color: green;
+    }
+    .incorrect .feedback,
+    .incorrect label {
+      color: red;
+    }
+    .correct select {
+      border: 2px solid green;
+    }
+    .incorrect select {
+      border: 2px solid red;
+    }
+    button {
+      display: block;
+      margin: 2rem auto;
+      padding: 0.6rem 1.2rem;
+      background: #003366;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #002244;
+    }
+    #result {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <h1>HTML Basics Quiz</h1>
-  <form id="quiz-form">
-    <div>
-      <p>1. What does HTML stand for?</p>
-      <input type="radio" name="q1" value="a"> Home Tool Markup Language<br>
-      <input type="radio" name="q1" value="b"> HyperText Markup Language<br>
-      <input type="radio" name="q1" value="c"> Hyperlink Text Management Language<br>
-    </div>
-    <button type="button" onclick="submitQuiz()">Submit</button>
-  </form>
-  <div id="result"></div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+  <h1>English quiz for Maryna</h1>
+  <p class="intro">
+    Proficiency-level quiz on say/tell, reported speech, 3rd conditional, polysemous vocabulary & idioms.<br>
+    Choose an option for each question, then press <strong>Submit Answers</strong>.
+  </p>
+
+  <div id="quiz">
+    <!-- Q1: say/tell -->
+    <div class="question" id="q1-wrap">
+      <label for="q1">1. Bohdan ____ me his daily 'interesting fact' this morning.</label>
+      <select id="q1">
+        <option value="">— select —</option>
+        <option value="told">told</option>
+        <option value="said">said</option>
+        <option value="informed">informed</option>
+        <option value="mentioned">mentioned</option>
+      </select>
+      <span class="feedback"></span>
+      <div class="answer-key"></div>
+    </div>
+
+    <!-- Q2: reported speech -->
+    <div class="question" id="q2-wrap">
+      <label for="q2">2. Emma said, “I will call you tonight.” Reported:</label>
+      <select id="q2">
+        <option value="">— select —</option>
+        <option value="Emma said she would call me that night.">Emma said she would call me that night.</option>
+        <option value="Emma said that she would call me that night.">Emma said that she would call me that night.</option>
+        <option value="Emma told she will call me tonight.">Emma told she will call me tonight.</option>
+        <option value="Emma says she will call me tonight.">Emma says she will call me tonight.</option>
+      </select>
+      <span class="feedback"></span>
+      <div class="answer-key"></div>
+    </div>
+
+    <!-- Q3: 3rd conditional -->
+    <div class="question" id="q3-wrap">
+      <label for="q3">3. If I ____ about the traffic, I would never have left the flat, and stayed in bed instead.</label>
+      <select id="q3">
+        <option value="">— select —</option>
+        <option value="had known">had known</option>
+        <option value="knew">knew</option>
+        <option value="have known">have known</option>
+        <option value="had had known">had had known</option>
+      </select>
+      <span class="feedback"></span>
+      <div class="answer-key"></div>
+    </div>
+
+    <!-- Q4: polysemous -->
+    <div class="question" id="q4-wrap">
+      <label for="q4">4. She gave me a ring.</label>
+      <select id="q4">
+        <option value="">— select —</option>
+        <option value="telephone call">a telephone call</option>
+        <option value="jewellery">a piece of jewellery</option>
+        <option value="circle">to encircle</option>
+        <option value="twist">to twist</option>
+      </select>
+      <span class="feedback"></span>
+      <div class="answer-key"></div>
+    </div>
+
+    <!-- Q5: idiom -->
+    <div class="question" id="q5-wrap">
+      <label for="q5">5. To let the cat out of the bag means:</label>
+      <select id="q5">
+        <option value="">— select —</option>
+        <option value="to tell a secret">to tell a secret</option>
+        <option value="to free a cat">to free a cat</option>
+        <option value="to spoil a plan">to spoil a plan</option>
+        <option value="to get angry">to get angry</option>
+        <option value="to let Rudy escape and run wild">to let Rudy escape and run wild</option>
+      </select>
+      <span class="feedback"></span>
+      <div class="answer-key"></div>
+    </div>
+
+    <!-- Q6: say/tell -->
+    <div class="question" id="q6-wrap">
+      <label for="q6">6. Don’t ____ me you can’t help!</label>
+      <select id="q6">
+        <option value="">— select —</option>
+        <option value="tell">tell</option>
+        <option value="say">say</option>
+        <option value="ask">ask</option>
+        <option value="command">command</option>
+      </select>
+      <span class="feedback"></span>
+      <div class="answer-key"></div>
+    </div>
+
+    <!-- Q7: reported speech -->
+    <div class="question" id="q7-wrap">
+      <label for="q7">7. He told me, “I’m looking forward to the meeting.” Reported:</label>
+      <select id="q7">
+        <option value="">— select —</option>
+        <option value="He told me he was looking forward to the meeting.">He told me he was looking forward to the meeting.</option>
+        <option value="He told me that he was looking forward to the meeting.">He told me that he was looking forward to the meeting.</option>
+        <option value="He said me he was looking forward to the meeting.">He said me he was looking forward to the meeting.</option>
+        <option value="He said that I was looking forward to the meeting.">He said that I was looking forward to the meeting.</option>
+      </select>
+      <span class="feedback"></span>
+      <div class="answer-key"></div>
+    </div>
+
+    <!-- Q8: 3rd conditional -->
+    <div class="question" id="q8-wrap">
+      <label for="q8">8. If the take-away ____ on time, we wouldn't have ended up eating Bruno's supper.</label>
+      <select id="q8">
+        <option value="">— select —</option>
+        <option value="had arrived">had arrived</option>
+        <option value="arrived">arrived</option>
+        <option value="have arrived">have arrived</option>
+        <option value="had had arrived">had had arrived</option>
+      </select>
+      <span class="feedback"></span>
+      <div class="answer-key"></div>
+    </div>
+
+    <!-- Q9: polysemous -->
+    <div class="question" id="q9-wrap">
+      <label for="q9">9. They sat on the bank of the river.</label>
+      <select id="q9">
+        <option value="">— select —</option>
+        <option value="slope of land">slope of land</option>
+        <option value="financial institution">financial institution</option>
+        <option value="seat">seat</option>
+        <option value="length">length</option>
+
